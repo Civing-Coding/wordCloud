@@ -1,0 +1,5 @@
+npm init --yes
+npm install -g node-gyp
+npm config set python python2.7
+npm config set msvs_version 2017
+npm install nodejieba

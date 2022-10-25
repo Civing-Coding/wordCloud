@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="./js2wordcloud.min.js"></script>
+</head>
+
+<body>
+    <div id="dv" style="width: 800px;height: 800px;"></div>
+    <img id="imgDown" style="width: 800px;height: 800px;">
+    <script type="text/javascript">
+        var result_kw = [
+            ['文章', 748.44758156342],
+            ['标题', 708.37712814128],
+            ['拟制', 405.9084694298],
+            ['材料', 360.7896724236],
+            ['主题', 347.22141711936],
+            ['定义', 338.10931982239003],
+            ['拟题', 281.6454379926],
+            ['语言', 246.5399029656],
+            ['结构', 198.0701640018],
+            ['百科', 182.9341446066],
+            ['引用', 172.12917693336],
+            ['情感', 163.90455905626],
+            ['论据', 161.152580088],
+            ['形式', 160.74099833984],
+            ['这种', 131.02487647425],
+            ['写作', 130.32653774642],
+            ['爆款', 129.13124737791895],
+            ['采用', 118.53745364542999],
+            ['作者', 117.41838263060001],
+            ['一种', 107.42254109573999],
+            ['思想', 106.16365803404],
+            ['主要', 103.7569350246],
+            ['事物', 103.36903078905],
+            ['下定义', 102.7419390198],
+            ['内容', 102.6856674986],
+            ['方式', 96.0298465874],
+            ['诗歌', 95.82636457823],
+            ['阅读', 93.94512955776],
+            ['运用', 92.79000267254999],
+            ['论著', 92.7124767613]
+        ];
+
+        var option = {
+            list: result_kw,
+            // color: 'blue',
+            shape: 'circle',
+            // color(word, weight, fontSize, distance, theta) { //自定义颜色
+            //     if (weight == 12) {
+            //         return '#DDDDDD';
+            //     } else {
+            //         if (_this.colorIndex >= 6) {
+            //             _this.colorIndex = -1;
+            //         }
+            //         _this.colorIndex += 1;
+            //         return _this.colors[_this.colorIndex];
+            //     }
+            //],
+            // backgroundColor: 'rgba(0, 0, 0, 1)',
+            // imageShape: require('@/assets/images/data-center/man.png'), //支持自定义图形
+            ellipticity: 1,
+            minRotation: -1.57080,
+            maxRotation: -1.57080,
+            rotateRatio: 0.3,
+            fontSizeFactor: 0.1, // 当词云值相差太大，可设置此值进字体行大小微调，默认0.1
+            maxFontSize: 80, // 最大fontSize，用来控制weightFactor，默认60
+            minFontSize: 20,
+            gridSize: 25,
+            cardioid: 'circle'
+        }
+
+        async function run() {
+            var wc = new Js2WordCloud(document.getElementById('dv'))
+            await wc.setOption(option)
+            await (() => {
+                return new Promise(function (resolve, reject) {
+                    setTimeout(() => {
+                        resolve()
+                    }, 100);
+                })
+            })()
+
+
+            var Vcanvas = document.querySelector('canvas');
+            document.getElementById("imgDown").src = Vcanvas.toDataURL("image/png");
+        }
+
+        run();
+    </script>
+</body>
+
+</html>
